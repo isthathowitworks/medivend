@@ -530,5 +530,11 @@ table td {
         background-color: #00796b; /* Background color on hover */
     }
 
+    #confirmationModal2 {
+        width: 90%;         /* Take up almost full width */
+        padding: 16px;      /* Slightly reduced padding */
+        
+    }
+
 
 }
