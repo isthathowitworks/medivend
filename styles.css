@@ -1,0 +1,464 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+/* loginapge */
+.loginpagebody {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures full height for centering */
+}
+
+.login-container {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input, .loginbutton {
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.loginbutton {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Removed transform transition */
+}
+
+.loginbutton:hover {
+    background-color: #45a049;
+    /* Removed transform property */
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #f0f0f0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    position: relative; /* Allow absolute positioning of toggle */
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px; /* Adjust the font size of the logo */
+    font-weight: 400; /* Optional: make the logo text bold */
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    left: 19px; /* Position the toggle on the left */
+    cursor: pointer;
+    z-index: 1001;
+    font-size: 25px;
+}
+
+.close-sidebar {
+    cursor: pointer;
+    font-size: 25px;
+    width: fit-content;
+    display: inline-block;
+    margin-left: auto;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    background-color: #f0f0f0;
+    /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+    padding: 20px;
+    z-index: 1002; /* Ensure this is higher than .inventory-container */
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    /* border-right: 2px solid #ddd; */
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Show sidebar */
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    gap: 15px; /* Add space between links */
+    margin-top: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 10px;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    background-color: #00796b; /* Background color on hover */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* border-radius: 12px; */
+    transition: transform 0.3s ease;
+}
+
+.invencontainer, .salescontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.inventory-container, .sales-log-container {
+    position: relative; /* Change from fixed to relative */
+    top: auto;          /* Remove top offset */
+    left: auto;         /* Remove left offset */
+    transform: none;    /* Remove transform */
+    z-index: auto;      /* Remove z-index or set to auto */
+    background-color: transparent;
+    padding: 20px;
+    text-align: center;
+}
+
+/* editformmedicine */
+#editForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input, button {
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #7accc2;
+    outline: none;
+}
+
+button {
+    background-color: #00796b;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    background-color: #ffebee;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.returntoinventory {
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: -20px;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: #e0f2f1;
+    z-index: 10;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Add these styles below your existing table, th, td styles */
+table tbody {
+    min-height: 1000px; /* Adjust as needed */
+    display: block;
+    width: 100%;
+}
+table thead, table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table th,
+table td {
+    text-align: center;
+    vertical-align: middl;
+}
+
+#salesLogTable td, 
+#salesLogTable th,
+#medicineTable td, 
+#medicineTable th {
+    height: 50px;            /* Fixed height */
+    padding: 8px 12px;       /* Uniform padding */
+    vertical-align: middle;  /* Vertically center the content */
+    box-sizing: border-box;  /* Prevent padding from breaking layout */
+    white-space: nowrap;     /* Optional: prevents wrapping */
+    overflow: hidden;        /* Hides overflow content */
+    text-overflow: ellipsis; /* Shows "..." if content overflows */
+}
+
+
+.card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.graph-placeholder {
+    height: 200px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.alerts-section {
+    background-color: #fff3e0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.alerts-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.alerts-section li {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* MODALEDITHMEDICINE */
+.overlay {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 999; /* Ensure it appears above other content */
+}
+
+.modal, .modal1, .modal2 {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it appears above other content */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content, .modal-content1,.modal-content2  {
+    text-align: center;
+}
+
+#cancelDelete, #confirmDelete, #confirmChangesYes1, #confirmChangesNo1, #confirmDelete2, #cancelDelete2{
+    margin: 0 15px; /* Add margin to separate buttons */
+    background-color: #00796b; /* Ensure consistent button color */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#confirmDelete:hover, #cancelDelete:hover, #confirmChangesYes1:hover, #confirmChangesNo1:hover, #confirmDelete2:hover, #cancelDelete2:hover{
+    background-color: #004d40; /* Darker shade on hover */
+}
+
+.fade-out {
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+@media (max-width: 360px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 100%;
+        background-color: #f0f0f0;
+        /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+        padding: 20px;
+        z-index: 1000; /* Ensure this is higher than .inventory-container */
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        /* border-right: 2px solid; */
+    }
+    /* .nav-links {
+        gap: 12px;
+        margin-top: 60px;
+        display: flex !important;
+        flex-direction: column !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        overflow: visible !important;
+    } */
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* Stack links vertically */
+        gap: 15px; /* Add space between links */
+        margin-top: 60px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        padding: 10px;
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    table {
+        width: 100%;
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+
+    th, td {
+        padding: 8px; /* Adjust padding for smaller screens */
+        text-align: left; /* Align text to the left for readability */
+    }
+
+    /* Additional mobile-friendly styles */
+    .login-container, #editForm {
+        width: 90%;
+        max-width: none; /* Remove max-width to allow full width usage */
+    }
+
+    input, button {
+        font-size: 14px; /* Slightly smaller font size for mobile */
+    }
+
+    .modal, .modal1 {
+        width: 90%; /* Ensure modals fit within mobile screen */
+    }
+
+}
