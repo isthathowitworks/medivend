@@ -110,6 +110,7 @@ footer {
     width: fit-content;
     display: inline-block;
     margin-left: auto;
+    margin-bottom: 5px; /* reduces space below the close button */
 }
 
 .sidebar {
@@ -469,6 +470,64 @@ table td {
         width: 100%;
         max-width: 400px;
         text-align: center;
+    }
+
+    .sidebar-toggle {
+        position: absolute;
+        top: 20px;
+        left: 19px; /* Position the toggle on the left */
+        cursor: pointer;
+        z-index: 1001;
+        font-size: 25px;
+    }
+    
+    .close-sidebar {
+        cursor: pointer;
+        font-size: 25px;
+        width: fit-content;
+        display: inline-block;
+        margin-left: auto;
+    }
+    
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 100%;
+        background-color: #f0f0f0;
+        /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+        padding: 20px;
+        z-index: 1002; /* Ensure this is higher than .inventory-container */
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        /* border-right: 2px solid #ddd; */
+    }
+    
+    .sidebar.active {
+        transform: translateX(0); /* Show sidebar */
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* Stack links vertically */
+        gap: 15px; /* Add space between links */
+        margin-top: 30px;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        padding: 10px;
+        border-radius: 5px; /* Rounded corners */
+    }
+    
+    .nav-links a:hover {
+        color: #ffffff;
+        background-color: #00796b; /* Background color on hover */
     }
 
 
