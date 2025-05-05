@@ -910,7 +910,7 @@ table td {
     }
 
     /* Additional mobile-friendly styles */
-    .login-container, #editForm {
+    #editForm {
         width: 90%;
         max-width: none; /* Remove max-width to allow full width usage */
     }
