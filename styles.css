@@ -1,0 +1,985 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+/* loginapge */
+.loginpagebody {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures full height for centering */
+}
+
+.login-container {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input, .loginbutton {
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.loginbutton {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Removed transform transition */
+}
+
+.loginbutton:hover {
+    background-color: #45a049;
+    /* Removed transform property */
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #f0f0f0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    position: relative; /* Allow absolute positioning of toggle */
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px; /* Adjust the font size of the logo */
+    font-weight: 400; /* Optional: make the logo text bold */
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    left: 19px; /* Position the toggle on the left */
+    cursor: pointer;
+    z-index: 1001;
+    font-size: 25px;
+}
+
+.close-sidebar {
+    cursor: pointer;
+    font-size: 25px;
+    width: fit-content;
+    display: inline-block;
+    margin-left: auto;
+    margin-bottom: 5px; /* reduces space below the close button */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    background-color: #f0f0f0;
+    /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+    padding: 20px;
+    z-index: 1002; /* Ensure this is higher than .inventory-container */
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    /* border-right: 2px solid #ddd; */
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Show sidebar */
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    gap: 15px; /* Add space between links */
+    margin-top: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 10px;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    background-color: #00796b; /* Background color on hover */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* border-radius: 12px; */
+    transition: transform 0.3s ease;
+}
+
+/* DASHBOARD */
+
+.salestablecontainer {
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    /* margin-top: 60px; */
+}
+
+.title1 {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.table-scroll {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+
+#todaySalesTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    table-layout: fixed;
+    
+}
+
+#todaySalesTable thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #e8f5f3;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    
+}
+
+#todaySalesTable tbody {
+    display: block;
+    max-height: 300px; /* ensure scroll only for data */
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 15px; /* aligns the first row with header nicely */
+}
+
+#todaySalesTable tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#todaySalesTable tr:first-child td {
+    padding-top: 14px; /* ensure first data row is not cut off */
+}
+
+#todaySalesTable th,
+#todaySalesTable td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#todaySalesTable tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+#todaySalesTable tfoot {
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    border-top: 2px solid #ddd;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#todaySalesTable tfoot td {
+    padding: 12px 15px;
+    font-weight: bold;
+}
+
+/* Column widths */
+#todaySalesTable th:nth-child(1),
+#todaySalesTable td:nth-child(1) {
+    width: 35%;
+}
+
+#todaySalesTable th:nth-child(2),
+#todaySalesTable td:nth-child(2) {
+    width: 20%;
+}
+
+#todaySalesTable th:nth-child(3),
+#todaySalesTable td:nth-child(3) {
+    width: 25%;
+}
+
+#todaySalesTable th:nth-child(4),
+#todaySalesTable td:nth-child(4) {
+    width: 20%;
+}
+
+/* Custom scrollbar */
+.table-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Status and Alerts positioning */
+.status-alerts-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start; /* Ensures top alignment */
+    gap: 32px;
+    margin-top: 30px;
+    margin-bottom: 0; /* Reduced margin-bottom to remove extra space */
+    padding: 0 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 100px; /* Reduced margin-bottom to remove extra space */
+    padding: 0 20px;
+    
+}
+
+
+
+.status-section,
+.alerts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    margin: 0 10px; /* Optional: small spacing left/right */
+}
+
+.section-title {
+    margin-bottom: 45px;
+    font-size: 1.15em;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+.section-title1 {
+    margin-bottom: 42px;
+    font-size: 1.15em;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+.machineStatus1, .alerts-section {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    table-layout: fixed;
+}
+
+
+.machineStatus1 thead, .alerts-section thead {
+    position: relative;
+    top: 0;
+    z-index: 1;
+    background-color: #e8f5f3;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+
+.machineStatus1 tbody, .alerts-section tbody {
+    display: block;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.machineStatus1 tbody tr, .alerts-section tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.machineStatus1 th, .machineStatus1 td, .alerts-section th, .alerts-section td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.machineStatus1 tbody tr:hover, .alerts-section tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+
+
+
+
+.invencontainer, .salescontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease;
+    margin-top: -120px;
+}
+
+.invencontainer, .salescontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.inventory-container, .sales-log-container{
+    position: relative; /* Change from fixed to relative */
+    top: auto;          /* Remove top offset */
+    left: auto;         /* Remove left offset */
+    transform: none;    /* Remove transform */
+    z-index: auto;      /* Remove z-index or set to auto */
+    background-color: transparent;
+    padding: 20px;
+    text-align: center;
+}
+
+/* editformmedicine */
+#editForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input, button {
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #7accc2;
+    outline: none;
+}
+
+button {
+    background-color: #00796b;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    background-color: #ffebee;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.returntoinventory {
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: -20px;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: #e0f2f1;
+    z-index: 10;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Add these styles below your existing table, th, td styles */
+table tbody {
+    display: block;
+    width: 100%;
+}
+table thead, table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table th,
+table td {
+    text-align: center;
+    vertical-align: middl;
+}
+
+#salesLogTable td, 
+#salesLogTable th,
+#medicineTable td, 
+#medicineTable th {
+    height: 50px;            /* Fixed height */
+    padding: 8px 12px;       /* Uniform padding */
+    vertical-align: middle;  /* Vertically center the content */
+    box-sizing: border-box;  /* Prevent padding from breaking layout */
+    white-space: nowrap;     /* Optional: prevents wrapping */
+    overflow: hidden;        /* Hides overflow content */
+    text-overflow: ellipsis; /* Shows "..." if content overflows */
+}
+
+
+.card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.graph-placeholder {
+    height: 200px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+
+.alerts-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.alerts-section li {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* MODALEDITHMEDICINE */
+.overlay {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 999; /* Ensure it appears above other content */
+}
+
+.modal, .modal1, .modal2 {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it appears above other content */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content, .modal-content1,.modal-content2  {
+    text-align: center;
+}
+
+#cancelDelete, #confirmDelete, #confirmChangesYes1, #confirmChangesNo1, #confirmDelete2, #cancelDelete2{
+    margin: 0 15px; /* Add margin to separate buttons */
+    background-color: #00796b; /* Ensure consistent button color */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#confirmDelete:hover, #cancelDelete:hover, #confirmChangesYes1:hover, #confirmChangesNo1:hover, #confirmDelete2:hover, #cancelDelete2:hover{
+    background-color: #004d40; /* Darker shade on hover */
+}
+
+.fade-out {
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+@media (max-width: 360px) {
+
+    .invencontainer, .salescontainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+        background-color: #ffffff;
+        transition: transform 0.3s ease;
+        margin-top: -120px;
+    }
+    
+    .invencontainer, .salescontainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+        background-color: #ffffff;
+        transition: transform 0.3s ease;
+    }
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 100%;
+        background-color: #f0f0f0;
+        padding: 20px;
+        z-index: 1000; /* Ensure this is higher than .inventory-container */
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* Stack links vertically */
+        gap: 15px; /* Add space between links */
+        margin-top: 60px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        padding: 10px;
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+
+    th, td {
+        padding: 8px; /* Adjust padding for smaller screens */
+        text-align: left; /* Align text to the left for readability */
+    }
+
+    /* Additional mobile-friendly styles */
+    #editForm {
+        width: 100%;
+        max-width: none; /* Remove max-width to allow full width usage */
+    }
+
+    input, button {
+        font-size: 14px; /* Slightly smaller font size for mobile */
+    }
+
+    .modal, .modal1 {
+        width: 90%; /* Ensure modals fit within mobile screen */
+    }
+
+    .login-container {
+        background-color: #f9f9f9;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .sidebar-toggle {
+        position: absolute;
+        top: 20px;
+        left: 19px; /* Position the toggle on the left */
+        cursor: pointer;
+        z-index: 1001;
+        font-size: 25px;
+    }
+    
+    .close-sidebar {
+        cursor: pointer;
+        font-size: 25px;
+        width: fit-content;
+        display: inline-block;
+        margin-left: auto;
+    }
+    
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 100%;
+        background-color: #f0f0f0;
+        /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+        padding: 20px;
+        z-index: 1002; /* Ensure this is higher than .inventory-container */
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        /* border-right: 2px solid #ddd; */
+    }
+    
+    .sidebar.active {
+        transform: translateX(0); /* Show sidebar */
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* Stack links vertically */
+        gap: 15px; /* Add space between links */
+        margin-top: 30px;
+    }
+    
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        padding: 10px;
+        border-radius: 5px; /* Rounded corners */
+    }
+    
+    .nav-links a:hover {
+        color: #ffffff;
+        background-color: #00796b; /* Background color on hover */
+    }
+
+    #confirmationModal2 {
+        width: 90%;         /* Take up almost full width */
+        padding: 16px;      /* Slightly reduced padding */
+        
+    }
+
+     /* Dashboard table responsive styles */
+     .salestablecontainer {
+        background: white;
+        padding: 20px;
+        margin: 0px;
+        /* margin-top: 60px; */
+    }
+    
+    .title1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.5em;
+    }
+    
+    .table-scroll {
+        max-height: 300px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+    }
+    
+    #todaySalesTable {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        table-layout: fixed;
+        
+    }
+    
+    #todaySalesTable thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: #e8f5f3;
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        
+    }
+    
+    #todaySalesTable tbody {
+        display: block;
+        max-height: 300px; /* ensure scroll only for data */
+        overflow-y: auto;
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 15px; /* aligns the first row with header nicely */
+    }
+    
+    #todaySalesTable tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+    
+    #todaySalesTable tr:first-child td {
+        padding-top: 14px; /* ensure first data row is not cut off */
+    }
+    
+    #todaySalesTable th,
+    #todaySalesTable td {
+        padding: 12px 15px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    #todaySalesTable tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+    
+    #todaySalesTable tfoot {
+        position: sticky;
+        bottom: 0;
+        background-color: white;
+        border-top: 2px solid #ddd;
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+    
+    #todaySalesTable tfoot td {
+        padding: 12px 15px;
+        font-weight: bold;
+    }
+    
+    /* Column widths */
+    #todaySalesTable th:nth-child(1),
+    #todaySalesTable td:nth-child(1) {
+        width: 35%;
+    }
+    
+    #todaySalesTable th:nth-child(2),
+    #todaySalesTable td:nth-child(2) {
+        width: 20%;
+    }
+    
+    #todaySalesTable th:nth-child(3),
+    #todaySalesTable td:nth-child(3) {
+        width: 25%;
+    }
+    
+    #todaySalesTable th:nth-child(4),
+    #todaySalesTable td:nth-child(4) {
+        width: 20%;
+    }
+    
+    /* Custom scrollbar */
+    .table-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .table-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    .table-scroll::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 3px;
+    }
+    
+    .table-scroll::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    /* Status and Alerts positioning */
+    .status-alerts-row {
+        display: column;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start; /* Ensures top alignment */
+        gap: 60px;
+        margin-top: 30px;
+        margin-bottom: 100px; /* Reduced margin-bottom to remove extra space */
+        padding: 0 20px;
+    }
+    
+    
+    
+    .status-section,
+    .alerts-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 280px;
+        margin: 0 10px; /* Optional: small spacing left/right */
+    }
+    
+    .section-title {
+        margin-bottom: 45px;
+        font-size: 1.15em;
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+    }
+    
+    .section-title1 {
+        margin-bottom: 42px;
+        font-size: 1.15em;
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+    }
+    .machineStatus1, .alerts-section {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        table-layout: fixed;
+    }
+    
+    
+    .machineStatus1 thead, .alerts-section thead {
+        position: relative;
+        top: 0;
+        z-index: 1;
+        background-color: #e8f5f3;
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+    
+    
+    .machineStatus1 tbody, .alerts-section tbody {
+        display: block;
+        max-height: 300px;
+        overflow-y: auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .machineStatus1 tbody tr, .alerts-section tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+    
+    .machineStatus1 th, .machineStatus1 td, .alerts-section th, .alerts-section td {
+        padding: 12px 15px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .machineStatus1 tbody tr:hover, .alerts-section tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+    
+}

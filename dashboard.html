@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="sidebar-toggle">☰</div>
+        <div class="logo">MediVend</div>
+        <div class="sidebar">
+            <div class="close-sidebar">☰</div>
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="sales_log.html">Sales Log</a>
+                <a href="#">Settings</a>
+                <a href="index.html">Log Out</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Sales Table -->
+    <div class="salestablecontainer">
+        <h2 class="title1">Sales Today</h2>
+        <div class="table-scroll">
+            <table id="todaySalesTable">
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Quantity Sold</th>
+                        <th>Time</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="salesTableBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3"><strong>Total Sales Today</strong></td>
+                        <td id="totalSales"><strong>₱0.00</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <!-- Machine Status -->
+    <div class="status-alerts-row">
+        <div class="machineStatus1">
+            <h2 class="section-title">Machine Status</h2> 
+            <table id="machineStatusTable" class="status-table">
+                <thead>
+                    <tr>
+                        <th>Machine</th>
+                        <th>Status.</th>
+                    </tr>
+                </thead>
+                <tbody class="mactable">
+                    <tr>
+                        <td>Temp</td>
+                        <td><!-- Value will be populated by JavaScript --></td>
+                    </tr>
+                    <tr>
+                        <td>Coin Bal</td>
+                        <td><!-- Value will be populated by JavaScript --></td>
+                    </tr>
+                    <tr>
+                        <td>Rem Med</td>
+                        <td><!-- Value will be populated by JavaScript --></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Alerts Section -->
+        <div class="alerts-section">
+            <h3 class="section-title1">Stock Alert</h3>
+            <table id="alertsTable" class="status-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Qty.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

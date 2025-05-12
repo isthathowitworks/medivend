@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>MediVend - Inventory</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="sidebar-toggle">☰</div>
+        <div class="logo">MediVend</div>
+        <div class="sidebar">
+            <div class="close-sidebar">☰</div>
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="inventory.html">Inventory</a>
+                <a href="sales_log.html">Sales Log</a>
+                <a href="#">Settings</a>
+                <a href="index.html">Log Out</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="inventory-container">
+        <h2>Inventory Management</h2>
+        <input type="text" id="searchBar" placeholder="Search Medicine">
+    </div>
+    <div class="invencontainer">
+        <table id="medicineTable">
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Stock</th>
+                    <th>Expiration Date</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <script src="scripts.js"></script> <!-- Ensure JavaScript is included -->
+</body>
+</html>
