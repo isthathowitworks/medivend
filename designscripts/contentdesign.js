@@ -110,33 +110,34 @@ window.addEventListener("resize", () => {
 // ===== Inventory Controller =====
 const InventoryController = (() => {
 
-function setupImagePicker(scope = document) {
-  const chooseBtn = scope.querySelector('[data-image-choose]');
-  const fileInput = scope.querySelector('[data-image-input]');
-  const fileNameField = scope.querySelector('[data-image-filename]');
-  const preview = scope.querySelector('[data-image-preview]');
+  function setupImagePicker(scope = document) {
+    const chooseBtn = scope.querySelector('[data-image-choose]');
+    const fileInput = scope.querySelector('[data-image-input]');
+    const fileNameField = scope.querySelector('[data-image-filename]');
+    const preview = scope.querySelector('[data-image-preview]');
 
-  if (!chooseBtn || !fileInput || !fileNameField) return;
+    if (!chooseBtn || !fileInput || !fileNameField) return;
 
-  chooseBtn.addEventListener('click', () => fileInput.click());
+    chooseBtn.onclick = () => fileInput.click();
 
-  fileInput.addEventListener('change', () => {
-    if (!fileInput.files.length) {
-      fileNameField.value = 'No file chosen';
-      preview.classList.add('d-none');
-      return;
-    }
 
-    const file = fileInput.files[0];
-    fileNameField.value = file.name;
+    fileInput.addEventListener('change', () => {
+      if (!fileInput.files.length) {
+        fileNameField.value = 'No file chosen';
+        preview.classList.add('d-none');
+        return;
+      }
 
-    // live preview
-    if (preview) {
-      preview.src = URL.createObjectURL(file);
-      preview.classList.remove('d-none');
-    }
-  });
-}
+      const file = fileInput.files[0];
+      fileNameField.value = file.name;
+
+      // live preview
+      if (preview) {
+        preview.src = URL.createObjectURL(file);
+        preview.classList.remove('d-none');
+      }
+    });
+  }
 
 
   let currentInventoryId = null;
