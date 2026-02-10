@@ -216,7 +216,7 @@ main h4 {
 
 /* ================= Sidebar Mobile Behavior ================= */
 
-@media (max-width: 767.98px) {
+@media (max-width: 600px) {
   .sidebar {
     position: fixed;
     top: 0;
